@@ -1,0 +1,22 @@
+{
+  "timestamp_utc": "2026-08-10T10:01:47.609491+00:00",
+  "count": 40,
+  "llm_judges": true,
+  "metrics_aggregate": {
+    "status_match.status_match": 0.925,
+    "citation_ok.citation_ok": 1.0,
+    "citation_ok.citation_count": 1.725,
+    "gold_token_recall.gold_token_recall": 0.46752749999999993,
+    "gold_token_recall.gold_tokens_checked": 18.25,
+    "groundedness.groundedness": 4.641025641025641,
+    "groundedness.groundedness_score": 4.641025641025641,
+    "relevance.relevance": 4.45,
+    "relevance.relevance_score": 4.45,
+    "relevance.relevance_passed": 0.95,
+    "groundedness.binary_aggregate": 0.93,
+    "relevance.binary_aggregate": 0.95
+  },
+  "studio_url": null,
+  "sdk_output": "foundry_sdk_20260810T095753Z.json",
+  "per_row_parsed": 40
+}

@@ -1,0 +1,6 @@
+{"id": "pto_0_2", "question": "How many PTO days for 0-2 years of service?", "expect": {"status": ["answer"], "answer_contains_any": ["15"], "forbid_path": ["multi"], "min_citations": 1}}
+{"id": "password_min", "question": "What is the minimum password length?", "expect": {"status": ["answer"], "answer_contains_any": ["12"], "forbid_path": ["multi"]}}
+{"id": "price_pro", "question": "What is the Professional list price per seat per month for 2026?", "expect": {"status": ["answer"], "answer_contains_any": ["65", "$65"], "forbid_path": ["multi"]}}
+{"id": "personal_salary", "question": "What is Alice's salary?", "expect": {"status": ["escalate"], "forbid_path": ["multi"]}}
+{"id": "vpn_connect", "question": "How do I connect to the NorthLink VPN?", "expect": {"status": ["answer"], "answer_contains_any": ["vpn.northwind", "NorthLink", "Okta"], "forbid_path": ["multi"]}}
+{"id": "and_not_compare", "question": "What is the PTO and sick leave policy overview?", "expect": {"status": ["answer", "escalate", "partial"], "forbid_path": []}}

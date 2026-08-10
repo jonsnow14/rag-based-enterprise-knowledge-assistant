@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    width: 1500px;
+    height: 1000px;
+    overflow: hidden !important;
+    font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+    background: #f0f6fb;
+    color: #0f172a;
+  }
+  body { padding: 22px 28px 18px; }
+  h1 {
+    text-align: center;
+    font-size: 26px;
+    font-weight: 750;
+    color: #0f172a;
+    letter-spacing: -0.02em;
+  }
+  .sub {
+    text-align: center;
+    font-size: 13px;
+    color: #0d7377;
+    font-weight: 600;
+    margin: 5px 0 12px;
+  }
+  .badge-row {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+  .badge {
+    font-size: 10.5px;
+    font-weight: 700;
+    padding: 4px 11px;
+    border-radius: 999px;
+    color: #fff;
+  }
+  .b1 { background: #0d7377; }
+  .b2 { background: #0369a1; }
+  .b3 { background: #7c3aed; }
+  .b4 { background: #b45309; }
+
+  .wrap { display: grid; grid-template-rows: auto auto auto; gap: 11px; }
+
+  .panel {
+    background: #fff;
+    border: 1.5px dashed #94a3b8;
+    border-radius: 14px;
+    padding: 11px 14px 12px;
+  }
+  .panel-title {
+    text-align: center;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    color: #0d7377;
+    margin-bottom: 10px;
+  }
+  .upload {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    align-items: stretch;
+    margin-bottom: 8px;
+  }
+  .box {
+    border-radius: 10px;
+    padding: 8px 12px;
+    font-size: 12px;
+    font-weight: 650;
+    text-align: center;
+    line-height: 1.3;
+    border: 1px solid transparent;
+  }
+  .box.wide { min-width: 260px; }
+  .slate { background: #e2e8f0; color: #1e293b; border-color: #cbd5e1; }
+  .teal { background: #ccfbf1; color: #115e59; border-color: #5eead4; }
+  .amber { background: #fef3c7; color: #92400e; border-color: #fcd34d; }
+  .blue { background: #dbeafe; color: #1e3a8a; border-color: #93c5fd; }
+  .green { background: #d1fae5; color: #065f46; border-color: #6ee7b7; }
+  .purple { background: #ede9fe; color: #5b21b6; border-color: #c4b5fd; }
+  .rose { background: #ffe4e6; color: #9f1239; border-color: #fda4af; }
+  .indigo { background: #e0e7ff; color: #3730a3; border-color: #a5b4fc; }
+  .sky { background: #e0f2fe; color: #075985; border-color: #7dd3fc; }
+  .navy {
+    background: linear-gradient(135deg, #0f766e, #0369a1);
+    color: #fff;
+    border: none;
+    font-weight: 700;
+  }
+
+  .arrow-down {
+    text-align: center;
+    color: #64748b;
+    font-size: 14px;
+    font-weight: 700;
+    margin: 2px 0 6px;
+  }
+
+  .lanes {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 8px;
+  }
+  .lane {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 6px 5px 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  .lane-h {
+    text-align: center;
+    font-size: 10.5px;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    padding: 5px 4px;
+    border-radius: 7px;
+    color: #fff;
+  }
+  .hr { background: #0d9488; }
+  .fin { background: #2563eb; }
+  .it { background: #7c3aed; }
+  .leg { background: #b45309; }
+  .sal { background: #dc2626; }
+  .step {
+    font-size: 10.5px;
+    font-weight: 600;
+    text-align: center;
+    padding: 5px 3px;
+    border-radius: 6px;
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    color: #334155;
+  }
+  .kb {
+    font-size: 10px;
+    font-weight: 700;
+    text-align: center;
+    padding: 7px 3px;
+    border-radius: 7px;
+    background: #1e3a5f;
+    color: #e0f2fe;
+  }
+  .mini-arr {
+    text-align: center;
+    color: #94a3b8;
+    font-size: 9px;
+    line-height: 1;
+  }
+
+  .mid {
+    display: grid;
+    grid-template-columns: 190px 1fr 190px;
+    gap: 10px;
+    align-items: center;
+  }
+  .side-stack { display: flex; flex-direction: column; gap: 8px; }
+  .rag-core {
+    background: linear-gradient(145deg, #0f172a 0%, #0d4f56 55%, #0f2744 100%);
+    color: #f8fafc;
+    border-radius: 14px;
+    padding: 16px 20px;
+    min-height: 130px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border: 2px solid #14b8a6;
+  }
+  .rag-core h2 { font-size: 17px; font-weight: 800; margin-bottom: 6px; }
+  .rag-core p { font-size: 11.5px; color: #cbd5e1; line-height: 1.4; max-width: 500px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 5px; justify-content: center; margin-top: 10px; }
+  .chip {
+    font-size: 10px;
+    font-weight: 700;
+    padding: 3px 9px;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.25);
+    color: #e2e8f0;
+  }
+
+  .loop {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr 0.9fr 0.9fr 1fr;
+    gap: 8px;
+    align-items: stretch;
+  }
+  .loop .box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 70px;
+  }
+  .loop .box small {
+    display: block;
+    font-size: 10px;
+    font-weight: 500;
+    margin-top: 3px;
+    opacity: 0.92;
+  }
+  .flow-label {
+    text-align: center;
+    font-size: 10.5px;
+    font-weight: 700;
+    color: #64748b;
+    letter-spacing: 0.06em;
+    margin-bottom: 5px;
+  }
+  .footer {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 10px;
+    flex-wrap: wrap;
+  }
+  .foot-pill {
+    font-size: 10.5px;
+    font-weight: 700;
+    padding: 5px 12px;
+    border-radius: 999px;
+    color: #fff;
+  }
+  .note {
+    text-align: center;
+    font-size: 10.5px;
+    color: #64748b;
+    margin-top: 6px;
+    font-weight: 500;
+  }
+  .h-arr {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #64748b;
+    font-weight: 800;
+    font-size: 16px;
+  }
+  .box small {
+    display: block;
+    font-weight: 500;
+    font-size: 10.5px;
+    margin-top: 3px;
+  }
+</style>
+</head>
+<body>
+  <h1>Northwind Traders Knowledge Assistant</h1>
+  <div class="sub">Proposed Enhancement Architecture — Governed ingest · Standing RAG · Foundry eval · Async analyzer · HITL adaptive loop</div>
+  <div class="badge-row">
+    <span class="badge b1">Not implemented yet</span>
+    <span class="badge b2">Hot path stays agent-free</span>
+    <span class="badge b3">Foundry offline / batch</span>
+    <span class="badge b4">Human-in-the-loop required</span>
+  </div>
+
+  <div class="wrap">
+    <div class="panel">
+      <div class="panel-title">1 · GOVERNED DATA INGESTION</div>
+      <div class="upload">
+        <div class="box wide slate">Dedicated document<br/>upload layer</div>
+        <div class="h-arr">→</div>
+        <div class="box wide amber">Sanity check + department<br/>ingest guidelines validation</div>
+        <div class="h-arr">→</div>
+        <div class="box wide teal">Pass only · quarantine on fail<br/>(before embed / upsert)</div>
+      </div>
+      <div class="arrow-down">▼ dedicated logical pipeline per department</div>
+      <div class="lanes">
+        <div class="lane">
+          <div class="lane-h fin">FINANCE</div>
+          <div class="step">Parse</div><div class="mini-arr">▼</div>
+          <div class="step">Chunk</div><div class="mini-arr">▼</div>
+          <div class="step">Embed (AOAI)</div>
+          <div class="kb">Finance KB<br/>vectors / scope</div>
+        </div>
+        <div class="lane">
+          <div class="lane-h hr">HR</div>
+          <div class="step">Parse</div><div class="mini-arr">▼</div>
+          <div class="step">Chunk</div><div class="mini-arr">▼</div>
+          <div class="step">Embed (AOAI)</div>
+          <div class="kb">HR KB<br/>vectors / scope</div>
+        </div>
+        <div class="lane">
+          <div class="lane-h it">IT</div>
+          <div class="step">Parse</div><div class="mini-arr">▼</div>
+          <div class="step">Chunk</div><div class="mini-arr">▼</div>
+          <div class="step">Embed (AOAI)</div>
+          <div class="kb">IT KB<br/>vectors / scope</div>
+        </div>
+        <div class="lane">
+          <div class="lane-h leg">LEGAL</div>
+          <div class="step">Parse</div><div class="mini-arr">▼</div>
+          <div class="step">Chunk</div><div class="mini-arr">▼</div>
+          <div class="step">Embed (AOAI)</div>
+          <div class="kb">Legal KB<br/>vectors / scope</div>
+        </div>
+        <div class="lane">
+          <div class="lane-h sal">SALES</div>
+          <div class="step">Parse</div><div class="mini-arr">▼</div>
+          <div class="step">Chunk</div><div class="mini-arr">▼</div>
+          <div class="step">Embed (AOAI)</div>
+          <div class="kb">Sales KB<br/>vectors / scope</div>
+        </div>
+      </div>
+      <div class="note">Default topology: one hybrid Azure AI Search index with access_scope filters · optional physical isolation later</div>
+    </div>
+
+    <div class="panel" style="border-color:#5eead4">
+      <div class="panel-title">2 · STANDING RAG PIPELINE (UNCHANGED HOT PATH)</div>
+      <div class="mid">
+        <div class="side-stack">
+          <div class="box blue">Query<small>POST /v1/chat · X-API-Key</small></div>
+          <div class="box purple">RAG improvement layer<small>Approved config / re-ingest only</small></div>
+        </div>
+        <div class="rag-core">
+          <h2>RAG Pipeline</h2>
+          <p>Processes as per standing architecture — ACL · hybrid BM25+vector · evidence gate · grounded generate · citation allowlist · control system (single path default)</p>
+          <div class="chips">
+            <span class="chip">Azure AI Search</span>
+            <span class="chip">Azure OpenAI</span>
+            <span class="chip">App Service FastAPI</span>
+            <span class="chip">FORCE_SINGLE_PATH kill switch</span>
+          </div>
+        </div>
+        <div class="side-stack">
+          <div class="box green">Response<small>answer · escalate · partial · clarify + citations</small></div>
+          <div class="box sky">Diagnostics<small>path · chunks · scores · flags</small></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel" style="border-color:#c4b5fd">
+      <div class="panel-title">3 · POST-RESPONSE ANALYSIS &amp; ADAPTIVE LOOP (ASYNC · NOT ON CHAT LATENCY PATH)</div>
+      <div class="flow-label">OFFLINE / BATCH CLOSED LOOP</div>
+      <div class="loop">
+        <div class="box indigo">Azure AI Foundry<br/>evaluation suite
+          <small>groundedness · relevance · status / citation metrics · golden set + sampled traffic</small>
+        </div>
+        <div class="box purple">Response Analyzer<br/>(async agent / job)
+          <small>quality check · flag fails · RCA draft · propose pipeline changes</small>
+        </div>
+        <div class="box rose">Human-in-the-loop
+          <small>review · approve · reject · edit proposals</small>
+        </div>
+        <div class="box amber">Improvement design
+          <small>thresholds · guidelines · re-chunk · ranker flags</small>
+        </div>
+        <div class="box navy">If approved → adapt
+          <small>apply → re-eval gate → promote · audit log</small>
+        </div>
+      </div>
+      <div class="arrow-down" style="margin-top:8px;font-size:12px">▲ feeds RAG improvement layer — never unsupervised production self-modify</div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span class="foot-pill" style="background:#0d7377">Azure OpenAI</span>
+    <span class="foot-pill" style="background:#0369a1">Azure AI Search</span>
+    <span class="foot-pill" style="background:#0e7490">Azure AI Foundry Eval</span>
+    <span class="foot-pill" style="background:#475569">App Service</span>
+    <span class="foot-pill" style="background:#7c3aed">Async Analyzer + HITL</span>
+  </div>
+  <div class="note">Figure — Proposed enhancement architecture (vision). No third-party watermark. Source: proposed-enhancements/PROPOSED-ENHANCEMENT.jpg</div>
+</body>
+</html>

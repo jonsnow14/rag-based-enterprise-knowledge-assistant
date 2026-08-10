@@ -1,0 +1,2 @@
+{"id": "compare_ent_pro_price", "question": "Compare Enterprise vs Professional list price per seat", "expect": {"status": ["answer", "partial"], "path_in": ["multi", "single", "single_fallback"]}}
+{"id": "followup_standard", "question": "What about Professional?", "history": [{"role": "user", "content": "What is the Enterprise plan list price for 2026?"}, {"role": "assistant", "content": "Enterprise is $109 per seat per month."}], "include_diagnostics": true, "expect": {"status": ["answer", "partial", "escalate"], "diagnostics_has_rewrite": true}}

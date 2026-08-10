@@ -1,0 +1,63 @@
+<!--
+  Azure API Management inbound policy for Northwind RAG.
+  Attach to the API or Product that fronts Container Apps / App Service.
+
+  Partner calls APIM with:
+    Ocp-Apim-Subscription-Key: <subscription-key>
+
+  Optional: also forward X-API-Key if backend REQUIRE_API_KEY=true.
+-->
+<policies>
+  <inbound>
+    <base />
+    <!-- Reject empty bodies on chat -->
+    <choose>
+      <when condition="@(context.Request.Method == &quot;POST&quot; &amp;&amp; context.Request.Body.As&lt;string&gt;(preserveContent: true).Length &lt; 2)">
+        <return-response>
+          <set-status code="400" reason="Bad Request" />
+          <set-header name="Content-Type" exists-action="override">
+            <value>application/json</value>
+          </set-header>
+          <set-body>{"detail":"Request body required"}</set-body>
+        </return-response>
+      </when>
+    </choose>
+
+    <!-- Rate limit: 60 calls per minute per subscription -->
+    <rate-limit-by-key
+      calls="60"
+      renewal-period="60"
+      counter-key="@(context.Subscription?.Key ?? context.Request.IpAddress)"
+      remaining-calls-header-name="X-RateLimit-Remaining" />
+
+    <!-- Daily quota example: 2000 calls / day / subscription -->
+    <quota-by-key
+      calls="2000"
+      renewal-period="86400"
+      counter-key="@(context.Subscription?.Key ?? &quot;anonymous&quot;)" />
+
+    <!-- Optional: forward a backend app key (set named value backend-api-key in APIM) -->
+    <!--
+    <set-header name="X-API-Key" exists-action="override">
+      <value>{{backend-api-key}}</value>
+    </set-header>
+    -->
+
+    <!-- Correlation -->
+    <set-header name="X-Request-Id" exists-action="override">
+      <value>@(Guid.NewGuid().ToString())</value>
+    </set-header>
+
+    <!-- Backend is set on the API (ACA/App Service URL). No rewrite required for /chat. -->
+  </inbound>
+  <backend>
+    <base />
+  </backend>
+  <outbound>
+    <base />
+    <set-header name="X-Powered-By" exists-action="delete" />
+  </outbound>
+  <on-error>
+    <base />
+  </on-error>
+</policies>

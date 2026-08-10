@@ -1,0 +1,72 @@
+# --- Secrets & local env (never commit) ---
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+credentials.json
+secrets.json
+
+# --- Local / private folders (not for public push) ---
+desing-docs/
+design-docs/
+proposed-enhancements/
+video_output/
+
+# Generated demo video at repo root (large binary)
+Northwind_RAG_Demo_Presentation.mp4
+*.mp4
+!docs/**/*.mp4
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+*$py.class
+.Python
+.venv/
+venv/
+env/
+*.egg-info/
+.eggs/
+dist/
+build/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+.tox/
+.nox/
+
+# --- IDE / OS ---
+.idea/
+.vscode/
+*.swp
+*~
+.DS_Store
+Thumbs.db
+
+# --- Runtime data & local indexes ---
+data/local_index/
+data/*.jsonl
+data/*.sqlite
+data/*.db
+
+# Generated eval / Foundry run outputs
+# Tracked (public reports — do not ignore):
+#   data-set/foundry_eval_summary.json
+#   data-set/eval_dataset_with_results.csv
+#   data-set/foundry_eval_rows.jsonl
+eval/results/
+data-set/eval_results.jsonl
+data-set/foundry_sdk_*.json
+
+# --- Logs & caches ---
+*.log
+.cache/
+tmp/
+.temp/
+*.tmp
+docs/images/*_clean.png

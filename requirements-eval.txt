@@ -1,0 +1,8 @@
+# Optional dependencies for Azure AI Foundry / Evaluation SDK runs
+# Install: pip install -r requirements-eval.txt
+# (in addition to requirements.txt)
+
+azure-ai-evaluation>=1.18.0
+azure-identity>=1.19.0
+# Optional: log runs into a Foundry project UI
+# azure-ai-projects>=1.0.0
