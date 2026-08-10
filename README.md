@@ -1,4 +1,4 @@
-# Northwind Traders — Enterprise Knowledge Assistant
+#  Enterprise Knowledge Assistant
 
 [![Python 3.11+](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/downloads/)
 [![Azure OpenAI](https://img.shields.io/badge/Azure-OpenAI-0078D4?logo=microsoftazure&logoColor=white)](https://azure.microsoft.com/products/ai-services/openai-service)
@@ -9,7 +9,7 @@
 
 ## 1. Project description
 
-**Northwind Traders Enterprise Knowledge Assistant** is an **agent-free, Azure-productized RAG** application over mock enterprise policy documents (**HR, Finance, IT, Legal, Sales**).
+**Enterprise Knowledge Assistant** is an **agent-free, Azure-productized RAG** application over mock enterprise policy documents (**HR, Finance, IT, Legal, Sales**).
 
 Users ask natural-language questions. The system **retrieves** grounded passages from **Azure AI Search**, applies an **evidence gate**, then answers with **Azure OpenAI** and **citations**. A **control system** opens multi-query / rewrite only when confident; otherwise it stays on a classic single-path pipeline:
 
