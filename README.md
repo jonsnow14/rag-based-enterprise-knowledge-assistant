@@ -1042,7 +1042,7 @@ This section covers **proposed enhancements** (closed-loop quality system) and *
 
 ![Proposed enhancement architecture — governed ingest, standing RAG, Foundry eval, async analyzer, HITL adaptive loop](docs/images/architecture-proposed-enhancement.jpg)
 
-*Figure 3 — Proposed enhancement architecture (vision, **not implemented**): governed multi-dept ingest → standing agent-free RAG → Azure AI Foundry evaluation → async Response Analyzer → human-in-the-loop → gated adaptive applies. No third-party watermark.*
+*Figure 3 — Proposed enhancement architecture (vision, **not implemented**): governed multi-dept ingest → standing agent-free RAG → Azure AI Foundry evaluation → async Response Analyzer → human-in-the-loop → gated adaptive applies.*
 
 ```text
 Dedicated document upload
