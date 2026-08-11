@@ -111,7 +111,7 @@ Users ask natural-language questions. The system **retrieves** grounded passages
 
 ![Full architecture — Northwind Azure productized RAG](docs/images/architecture-full.jpg)
 
-*Figure 1 — End-to-end: ingest, Azure AI Search index, query path, and **Azure AI Foundry** evaluation lane (no third-party watermark).*
+*Figure 1 — End-to-end: ingest, Azure AI Search index, query path, and **Azure AI Foundry** evaluation lane.*
 
 ![Detailed architecture — ingest and query](docs/images/architecture-detailed.jpg)
 
